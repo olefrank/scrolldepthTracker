@@ -1,20 +1,18 @@
-# InViewTracker
-_InViewJS_ is a lightweight JavaScript plugin useful for tracking how much time users spend viewing certain content on your web pages. News papers or blogs use _InViewTracker_ to track how much time each user spends on reading articles on their website. Make sure all articles are within a container element (e.g. "#article"), include the plugin on your pages and start tracking!
+# ScrollDepthTracker
+_ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how far down users scroll down into certain content on your web pages. _ScrollDepthTracker_ also reports time stamps when users has reached certain points (e.g. 0%, 20%, 40%, 60%, 80%, 100%). News papers and blogs use _ScrollDepthTracker_ to track scroll depth with time stamps when their articles is viewed. Make sure all articles are within a container element (e.g. "#article"), include the plugin on your pages and start tracking!
 
-**[Available at my github page](https://github.com/olefrank/inviewjs/)**
+**[Available at my github page](https://github.com/olefrank/scrolldepthtracker/)**
 
 ## Options
 * **element** which element to track (default: ".article")
-* **pctInView** percentage that the element must fill the screen to be "in view" (default: 50)
+* **scrollDepthPercentage** percentage to 'slice up' element - preferably divisable by 100 (default: 50)
 * **eventHandler** name of external function to handle event broadcasting
-* **heartbeatInterval** interval (milliseconds) between heart beats (default: 2000 = 2 sec)
-* **heartbeatExpires** how long (milliseconds) before heartbeat stops (default: 180000 = 3 min)
 
 ## Demos
 In the '''demo''' folder you can find various HTML pages to demo the plugin. Open the browsers console to view events.
 
 ## Contributing
-Bug reports and code contributions are welcome. Please see [CONTRIBUTIONS.md](https://github.com/olefrank/inviewjs/).
+Bug reports and code contributions are welcome. Please see [CONTRIBUTIONS.md](https://github.com/olefrank/scrolldepthtracker/CONTRIBUTIONS.md).
 
 ## Contact
 If you have any questions you can find me on Twitter at [@olefrankjensen](https://twitter.com/OleFrankJensen).
