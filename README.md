@@ -3,6 +3,9 @@ _ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how 
 
 **[Available at my github page](https://github.com/olefrank/scrolldepthtracker/)**
 
+## Features
+_Coming soon!_
+
 ## Options
 * **element** which element to track (default: ".article")
 * **scrollDepthPercentage** percentage to 'slice up' element - preferably divisable by 100 (default: 50)
