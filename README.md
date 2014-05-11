@@ -12,7 +12,7 @@ _ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how 
 In the '''demo''' folder you can find various HTML pages to demo the plugin. Open the browsers console to view events.
 
 ## Contributing
-Bug reports and code contributions are welcome. Please see [CONTRIBUTIONS.md](https://github.com/olefrank/scrolldepthtracker/CONTRIBUTIONS.md).
+Bug reports and code contributions are welcome. Please see [CONTRIBUTIONS.md](https://github.com/olefrank/scrolldepthTracker/blob/master/CONTRIBUTIONS.md).
 
 ## Contact
 If you have any questions you can find me on Twitter at [@olefrankjensen](https://twitter.com/OleFrankJensen).
