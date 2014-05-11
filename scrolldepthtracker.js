@@ -1,12 +1,12 @@
 ; // defensive programming: script may be concatenated with others
 
 /*
- * ScrollDepth | v0.5
+ * ScrollDepthTracker | v0.1
  * Copyright (c) 2014 Ole Frank Jensen
  * Licensed under the MIT license
  */
 
-var AttentionTracker = (function() {
+var ScrollDepthTracker = (function() {
 
     "use strict";
 
