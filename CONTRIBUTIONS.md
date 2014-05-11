@@ -1,4 +1,4 @@
-# Contributing to Scroll Depth
+# Contributing to ScrollDepthTracker
 
 Contributions are welcome! There are just a few requested guidelines:
 
