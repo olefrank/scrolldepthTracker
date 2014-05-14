@@ -29,7 +29,7 @@
 		
 	</div>
 
-    <script src="../inviewtracker.js"></script>
+    <script src="../scrolldepthtracker.js"></script>
 	<script>
 
         // optional function to send events
@@ -40,9 +40,10 @@
         var element = document.querySelector(".content-block");
         var options = {
             element: element,
+            scrollDepthInterval: 25,
             eventHandler: eventCallbackFn
         };
-        InViewTracker.init(options);
+        ScrollDepthTracker.init(options);
 
 	</script>
 </body>

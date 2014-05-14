@@ -18,12 +18,12 @@ var ScrollDepthTracker = (function() {
     /**
      * Object to hold default settings
      * @element: DOM element to track
-     * @scrollDepthPercentage: size of slices to measure content with
+     * @scrollDepthInterval: size of slices to measure content with
      * @eventHandler: function to handle event broadcasting
      */
     var settings = {
         element: document.querySelector(".article"),
-        scrollDepthPercentage: 20,
+        scrollDepthInterval: 20,
         eventHandler: broadcastEvent
     };
 
@@ -32,6 +32,8 @@ var ScrollDepthTracker = (function() {
      */
     function bindDOMEvents() {
 
+        // when user scrolls: calculate scroll depth
+        // calculation happens after delay (150 ms)
         window.onscroll = function() {
             clearTimeout(scrollDelay);
             scrollDelay = setTimeout(function() {
@@ -41,24 +43,31 @@ var ScrollDepthTracker = (function() {
                     scrollDepth = sd;
                     settings.eventHandler(getScrollDepthEventMessage(scrollDepth));
                 }
+
             }, 150);
         };
 
     }
 
+    /**
+     * Calculate scroll depth
+     * Scroll depth can be in range 0-1
+     * Scroll depth is limited to intervals defined in settings 
+     * @return result: current scroll depth (number)
+     */
     function getScrollDepth() {
         var result;
         var rect = settings.element.getBoundingClientRect();
         var elementTop = rect.top;
         var elementHeight = rect.height;
         var viewBottom = window.innerHeight;
-        var slicePct = settings.scrollDepthPercentage / 100;
+        var slicePct = settings.scrollDepthInterval / 100;
 
         // if element is in view
         if (elementTop <= viewBottom) {
             result = (viewBottom - elementTop) / elementHeight;
 
-            // save time for first scroll event
+            // store time for first scroll event
             if (scrollTimeStart === undefined) {
                 scrollTimeStart = new Date();
             }
@@ -70,10 +79,18 @@ var ScrollDepthTracker = (function() {
         return result;
     }
 
+    /**
+     * Generate scroll depth event string
+     * Event string consists of scroll depths and time stamps
+     * Example: "sd_20=1500"
+     * Example: "sd_40=2500&sd_60=2500&sd_80=2500"
+     * @param depth: current scroll depth
+     * @return message: string describing scroll depth event
+     */
     function getScrollDepthEventMessage(depth) {
         var messageTxt;
         var message;
-        var slicePct = settings.scrollDepthPercentage / 100;
+        var slicePct = settings.scrollDepthInterval / 100;
         var depthTmp = 0;
         var timeDiff = new Date().getTime() - scrollTimeStart.getTime();
 
@@ -128,6 +145,7 @@ var ScrollDepthTracker = (function() {
         bindDOMEvents();
     }
 
+    // define plugin interface
     return {
         init: init
     };

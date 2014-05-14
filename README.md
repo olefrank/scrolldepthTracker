@@ -1,14 +1,14 @@
 # ScrollDepthTracker
-_ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how far down users scroll down into certain content on your web pages. _ScrollDepthTracker_ also reports time stamps when users has reached certain points (e.g. 0%, 20%, 40%, 60%, 80%, 100%). News papers and blogs use _ScrollDepthTracker_ to track scroll depth with time stamps when their articles is viewed. Make sure all articles are within a container element (e.g. "#article"), include the plugin on your pages and start tracking!
+_ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how far down users scroll down into certain content on your web pages. _ScrollDepthTracker_ also reports time stamps when users has reached certain points (e.g. 0%, 20%, 40%, 60%, 80%, 100%). News papers and blogs use _ScrollDepthTracker_ to track scroll depth with time stamps when their articles is viewed. Make sure all articles are within a container element (e.g. #article), include _ScrollDepthTracker_ on your pages and start tracking!
 
-**[Available at my github page](https://github.com/olefrank/scrolldepthtracker/)**
+**[Available at my github](https://github.com/olefrank/scrolldepthtracker/)**
 
 ## Features
 _Coming soon!_
 
 ## Options
 * **element** which element to track (default: ".article")
-* **scrollDepthPercentage** percentage to 'slice up' element - preferably divisable by 100 (default: 50)
+* **scrollDepthInterval** percentage to 'slice up' element - preferably divisable by 100 (default: 50)
 * **eventHandler** name of external function to handle event broadcasting
 
 ## Demos
