@@ -32,9 +32,22 @@ var ScrollDepthTracker = (function() {
      */
     function bindDOMEvents() {
 
+        // handle cross browser event listeners
+        var addEventListener = function (element, type, handler) {
+            if (element.addEventListener) {
+                return element.addEventListener(type, handler, false)
+            }
+            else if (element.attachEvent) {
+                return element.attachEvent("on" + type, handler)
+            }
+        };
+
+        // add eventlisteners
+        addEventListener(window, "scroll", onScrollHandler);
+
         // when user scrolls: calculate scroll depth
         // calculation happens after delay (150 ms)
-        window.onscroll = function() {
+        function onScrollHandler() {
             clearTimeout(scrollDelay);
             scrollDelay = setTimeout(function() {
 
@@ -45,7 +58,7 @@ var ScrollDepthTracker = (function() {
                 }
 
             }, 150);
-        };
+        }
 
     }
 
