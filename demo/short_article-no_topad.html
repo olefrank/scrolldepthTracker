@@ -33,8 +33,9 @@
 	<script>
 
         // optional function to send events
-        var eventCallbackFn = function(message) {
-            console.log("external event handler: " + message);
+        var eventCallbackFn = function(eventObj) {
+            console.log("--- external event handler ---");
+            console.log(eventObj);
         };
         // element to track
         var element = document.querySelector(".content-block");
