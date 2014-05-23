@@ -10,10 +10,11 @@ var ScrollDepthTracker = (function() {
 
     "use strict";
 
-    var scrollDepthIterator = 0;
-    var scrollDepth = -1;
+    var lastScrollDepth = -1;
     var scrollDelay;
     var scrollTimeStart;
+    var elementHeight;
+    var viewBottom;
 
     /**
      * Object to hold default settings
@@ -52,9 +53,9 @@ var ScrollDepthTracker = (function() {
             scrollDelay = setTimeout(function() {
 
                 var sd = getScrollDepth();
-                if (sd > scrollDepth) {
-                    scrollDepth = sd;
-                    settings.eventHandler(getScrollDepthEventMessage(scrollDepth));
+                if (sd > lastScrollDepth) {
+                    lastScrollDepth = sd;
+                    settings.eventHandler(getScrollDepthEvent(lastScrollDepth));
                 }
 
             }, 150);
@@ -72,8 +73,8 @@ var ScrollDepthTracker = (function() {
         var result;
         var rect = settings.element.getBoundingClientRect();
         var elementTop = rect.top;
-        var elementHeight = rect.height;
-        var viewBottom = window.innerHeight;
+        elementHeight = rect.height;
+        viewBottom = window.innerHeight;
         var slicePct = settings.scrollDepthInterval / 100;
 
         // if element is in view
@@ -100,42 +101,27 @@ var ScrollDepthTracker = (function() {
      * @param depth: current scroll depth
      * @return message: string describing scroll depth event
      */
-    function getScrollDepthEventMessage(depth) {
-        var messageTxt;
-        var message;
-        var slicePct = settings.scrollDepthInterval / 100;
-        var depthTmp = 0;
+    function getScrollDepthEvent(depth) {
+        var result;
         var timeDiff = new Date().getTime() - scrollTimeStart.getTime();
 
-        while (depthTmp < depth) {
-            depthTmp = (scrollDepthIterator * slicePct) < 1 ? (scrollDepthIterator * slicePct) : 1;
-            messageTxt = "sd_" + Math.round(depthTmp * 100) + "=" + timeDiff;
+        result = {
+            scrolldepth: Math.round(depth * 100),
+            timestamp: timeDiff,
+            viewportHeight: viewBottom,
+            elementHeight: elementHeight
+        };
 
-            if (message === undefined) {
-                message = messageTxt;
-            }
-            else {
-                message += "&" + messageTxt;
-            }
-
-            scrollDepthIterator++;
-        }
-
-        // first scroll depth measure (fake)
-        if (scrollDepthIterator === 0) {
-            message = "sd_0=0"
-            scrollDepthIterator++;
-        }
-
-        return message;
+        return result;
     }
 
     /**
      * Send events
-     * @param message: event message
+     * @param eventObj: event eventObj
      */
-    function broadcastEvent(message) {
-        console.log("simulate event: " + message);
+    function broadcastEvent(eventObj) {
+        console.log("--- simulate event ---");
+        console.log(eventObj);
     }
 
     /**
