@@ -4,9 +4,9 @@ _ScrollDepthTracker_ is a lightweight JavaScript plugin useful for tracking how 
 **[Available at my github](https://github.com/olefrank/scrolldepthtracker/)**
 
 ## Compatibility
-_InViewTracker_ should work fine in all modern browsers
+_ScrollDepthTracker_ should work fine in all modern browsers
 
-I've tested _InViewTracker_ on:
+I've tested _ScrollDepthTracker_ on:
 * Chrome 32+
 * Firefox 28+ 
 * IE 9+
